@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+    <!-- Google Fonts for a Premium Clean Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Social Media Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #0f172a; /* Sleek modern dark background */
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px; /* Limits width on desktop so it looks like a clean mobile app */
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Profile Header Styling */
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #3b82f6; /* Sleek blue border accent */
+            margin-bottom: 16px;
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+        }
+
+        .name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            letter-spacing: -0.025em;
+        }
+
+        .title {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        /* Core Action Grid (Call, Email, WhatsApp) */
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .action-item {
+            background: #1e293b;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #f8fafc;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid #334155;
+        }
+
+        .action-item i {
+            font-size: 1.3rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* Specific Brand Accent Colors on Hover */
+        .action-item.call:hover { border-color: #10b981; color: #10b981; }
+        .action-item.whatsapp:hover { border-color: #25d366; color: #25d366; }
+        .action-item.email:hover { border-color: #3b82f6; color: #3b82f6; }
+
+        /* Main Linktree Buttons Stack */
+        .links-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-btn {
+            background: #1e293b;
+            color: #f8fafc;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.25s ease;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-btn div {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .link-btn i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .link-btn .btn-icon {
+            color: #3b82f6; /* Accent color for custom icons */
+        }
+
+        .link-btn .arrow-icon {
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        /* Smooth Hover Effects for Desktop users */
+        .link-btn:hover {
+            transform: translateY(-2px);
+            background: #273549;
+            border-color: #475569;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .link-btn:hover .arrow-icon {
+            color: #f8fafc;
+            transform: translateX(2px);
+            transition: transform 0.2s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Profile Picture (Replace URL with your picture link or leave blank to show a placeholder broken image icon) -->
+        <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-img">
+
+        <!-- Info Elements -->
+        <h1 class="name">Asif</h1>
+        <p class="title">Accounting, Auditing & Digital Creator</p>
+
+        <!-- Quick Connect Bar -->
+        <div class="action-grid">
+            <a href="tel:+1234567890" class="action-item call">
+                <i class="fa-solid fa-phone"></i>
+                Call Me
+            </a>
+            <a href="https://wa.me/1234567890" class="action-item whatsapp" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+                WhatsApp
+            </a>
+            <a href="mailto:example@email.com" class="action-item email">
+                <i class="fa-solid fa-envelope"></i>
+                Email
+            </a>
+        </div>
+
+        <!-- Dynamic Linktree List -->
+        <div class="links-stack">
+            
+            <!-- Link 1: Website -->
+            <a href="https://yourwebsite.com" class="link-btn" target="_blank">
+                <div>
+                    <i class="fa-solid fa-globe btn-icon"></i>
+                    <span>Visit My Website</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <!-- Link 2: Instagram Profile -->
+            <a href="https://instagram.com/yourusername" class="link-btn" target="_blank">
+                <div>
+                    <i class="fa-brands fa-instagram btn-icon" style="color: #e1306c;"></i>
+                    <span>Follow on Instagram</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <!-- Link 3: YouTube Channel -->
+            <a href="https://youtube.com/yourchannel" class="link-btn" target="_blank">
+                <div>
+                    <i class="fa-brands fa-youtube btn-icon" style="color: #ff0000;"></i>
+                    <span>Subscribe on YouTube</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+            <!-- Link 4: Business Location / Map -->
+            <a href="https://maps.google.com" class="link-btn" target="_blank">
+                <div>
+                    <i class="fa-solid fa-location-dot btn-icon" style="color: #f43f5e;"></i>
+                    <span>Our Office Location</span>
+                </div>
+                <i class="fa-solid fa-chevron-right arrow-icon"></i>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
