@@ -1,7 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Al Jundi - Managing Director</title>
+    <!-- Premium clean font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Required icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            background-color: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Company branding */
+        .company-header {
+            margin-bottom: 20px;
+        }
+
+        .company-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+
+        .company-text {
+            color: #800000; /* Distinct maroon from design */
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .company-arabic {
+            direction: rtl;
+        }
+
+        /* Profile photo with circular mask */
+        .profile-photo-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px auto;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #800000;
+            box-shadow: 0 4px 10px rgba(128, 0, 0, 0.2);
+        }
+
+        /* Name and Title area */
+        .name-container {
+            margin-bottom: 25px;
+        }
+
+        .name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .title {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        .title-arabic {
+            direction: rtl;
+        }
+
+        /* Primary action icons grid */
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        .action-icon {
+            color: #800000;
+            font-size: 1.8rem;
+            padding: 10px;
+            border-radius: 12px;
+            background-color: transparent;
+            transition: background-color 0.2s;
+            text-decoration: none;
+        }
+
+        .action-icon:hover {
+            background-color: rgba(128, 0, 0, 0.1);
+        }
+
+        /* Primary big rectangular buttons */
+        .primary-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .full-btn {
+            background-color: white;
+            color: #800000;
+            border: none;
+            padding: 18px;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            transition: box-shadow 0.3s;
+            box-shadow: 0 0 15px rgba(128, 0, 0, 0.2); /* Soft crimson glow like in design */
+            cursor: pointer;
+        }
+
+        .full-btn:hover {
+            box-shadow: 0 0 20px rgba(128, 0, 0, 0.3);
+        }
+
+        /* Contact saving logic is done with the .vcf file approach, this code provides the UI */
+    </style>
+</head>
 <body>
-<h1>My NFC Profile</h1>
-<p>Hello World</p>
+
+    <div class="container">
+        <!-- Company branding area -->
+        <div class="company-header">
+            <!-- REPLACE logo.png WITH YOUR logo file name from Step 1 -->
+            <img src="logo.png" alt="Company Logo" class="company-logo">
+            <div class="company-text">
+                AL-MAJD
+                <span class="company-arabic">المجد</span>
+            </div>
+            <div class="company-text" style="font-size: 0.9rem; font-weight: 400;">
+                Travel & Tours
+                <span class="company-arabic">للسفر والسياحة</span>
+            </div>
+        </div>
+
+        <!-- Center profile image -->
+        <div class="profile-photo-container">
+            <!-- REPLACE myphoto.jpg WITH YOUR image file name from Step 1 -->
+            <img src="myphoto.jpg" alt="Profile Photo" class="profile-photo">
+        </div>
+
+        <!-- Bilingual Name and Title -->
+        <div class="name-container">
+            <div class="name">Mohammed Al Jundi</div>
+            <div class="title title-arabic">الرئيس التنفيذي</div>
+            <div class="title">Managing Director</div>
+        </div>
+
+        <!-- Set of 4 action icons -->
+        <div class="actions-grid">
+            <!-- REPLACE with your info -->
+            <a href="mailto:example@email.com" class="action-icon"><i class="fa-solid fa-envelope"></i></a>
+            <a href="tel:+97400000000" class="action-icon"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/97400000000" class="action-icon" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://instagram.com/yourusername" class="action-icon" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <!-- Prominent 'Crimson Glow' Buttons -->
+        <div class="primary-buttons">
+            <!-- Action to save contact; Requires backend logic or .vcf file link -->
+            <button class="full-btn">
+                <i class="fa-solid fa-download"></i>
+                Save Contact
+            </button>
+            <button class="full-btn">
+                <i class="fa-solid fa-globe"></i>
+                Website
+            </button>
+        </div>
+    </div>
+
 </body>
 </html>
