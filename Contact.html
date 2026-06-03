@@ -1,145 +1,79 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us - Lahore Market</title><style>
+  <meta charset="UTF-8">
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container py-5">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
-}
+<h2 class="mb-4">Contact Us</h2>
 
-body{
-background:linear-gradient(135deg,#0d6efd,#00c6ff);
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:30px;
-}
+<form action="send-mail.php" method="POST" class="w-100">
+  <div class="mb-3">
+    <label for="name" class="form-label">Full Name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required>
+  </div>
 
-.container{
-width:100%;
-max-width:850px;
-background:#fff;
-padding:40px;
-border-radius:20px;
-box-shadow:0 15px 40px rgba(0,0,0,.2);
-}
+  <div class="mb-3">
+    <label for="email" class="form-label">Email Address</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+  </div>
 
-.logo{
-text-align:center;
-font-size:36px;
-font-weight:bold;
-color:#0d6efd;
-margin-bottom:10px;
-}
+  <div class="mb-3">
+    <label for="subject" class="form-label">Subject</label>
+    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject of your message">
+  </div>
 
-.subtitle{
-text-align:center;
-color:#666;
-margin-bottom:30px;
-}
+  <div class="mb-4">
+    <label for="message" class="form-label">Your Message</label>
+    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+  </div>
 
-.row{
-display:flex;
-gap:15px;
-}
+  <!-- Honeypot field (hidden) -->
+  <div style="display:none;">
+    <input type="text" name="phone" value="">
+  </div>
 
-.col{
-flex:1;
-}
+  <!-- Captcha -->
+  <div class="mb-3">
+    <label for="captcha" class="form-label" id="captcha-question">Loading captcha…</label>
+    <input type="text" class="form-control" id="captcha" name="captcha" placeholder="Your answer" required>
+    <input type="hidden" id="captcha1" name="captcha1">
+    <input type="hidden" id="captcha2" name="captcha2">
+  </div>
 
-.form-group{
-margin-bottom:18px;
-}
+  <button type="submit" class="btn btn-primary w-100 py-2 fs-5">Send Message</button>
+</form>
 
-label{
-display:block;
-margin-bottom:8px;
-font-weight:600;
-color:#333;
-}
+<div id="form-message" class="mt-3"></div>
 
-input,
-textarea{
-width:100%;
-padding:14px;
-border:1px solid #ddd;
-border-radius:10px;
-font-size:15px;
-}
+<script>
+  // Generate simple addition captcha on page load
+  const n1 = Math.floor(Math.random() * 10) + 1;
+  const n2 = Math.floor(Math.random() * 10) + 1;
+  document.getElementById("captcha-question").textContent = "What is " + n1 + " + " + n2 + " ?";
+  document.getElementById("captcha1").value = n1;
+  document.getElementById("captcha2").value = n2;
 
-input:focus,
-textarea:focus{
-outline:none;
-border-color:#0d6efd;
-}
+  // Show messages from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const status = urlParams.get("status");
+  const msgDiv = document.getElementById("form-message");
+  if (status === "success") {
+    msgDiv.style.color = "green";
+    msgDiv.textContent = "Thank you! Your message has been sent successfully.";
+  } else if (status === "error") {
+    msgDiv.style.color = "red";
+    msgDiv.textContent = "Oops! Something went wrong. Please try again later.";
+  } else if (status === "captcha") {
+    msgDiv.style.color = "red";
+    msgDiv.textContent = "Captcha verification failed.";
+  } else if (status === "spam") {
+    msgDiv.style.color = "red";
+    msgDiv.textContent = "Spam detected. Please try again.";
+  }
+</script>
 
-textarea{
-height:180px;
-resize:vertical;
-}
-
-button{
-width:100%;
-padding:15px;
-background:#0d6efd;
-color:white;
-border:none;
-border-radius:10px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-background:#084298;
-}
-
-.footer{
-text-align:center;
-margin-top:20px;
-font-size:13px;
-color:#777;
-}
-
-@media(max-width:768px){
-
-.row{
-flex-direction:column;
-}
-
-.container{
-padding:25px;
-}
-
-}
-
-</style></head>
-<body><div class="container"><div class="logo">Lahore Market</div><div class="subtitle">
-Have questions? Send us a message and we'll get back to you.
-</div><form action="https://formsubmit.co/lahoremarketpk@gmail.com" method="POST"><input type="hidden" name="_subject" value="New Inquiry From Lahore Market Website"><input type="hidden" name="_captcha" value="true"><input type="hidden" name="_template" value="table"><input type="hidden" name="_next" value="https://lahoremarket.pk/thankyou.html"><div class="row"><div class="col form-group">
-<label>Full Name</label>
-<input type="text" name="Name" required>
-</div><div class="col form-group">
-<label>Email Address</label>
-<input type="email" name="Email" required>
-</div></div><div class="row"><div class="col form-group">
-<label>Phone Number</label>
-<input type="text" name="Phone" required>
-</div><div class="col form-group">
-<label>Subject</label>
-<input type="text" name="Subject" required>
-</div></div><div class="form-group">
-<label>Message</label>
-<textarea name="Message" required></textarea>
-</div><button type="submit">Send Message</button>
-
-</form><div class="footer">
-© 2026 Lahore Market. All Rights Reserved.
-</div></div></body>
+</body>
 </html>
