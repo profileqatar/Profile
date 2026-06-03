@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile UI Design</title>
+    <!-- FontAwesome for precise icon replication -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #120e16;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        /* Responsive Mobile Container & Desktop Card Preview */
+        .profile-container {
+            width: 100%;
+            max-width: 412px; 
+            height: 860px;
+            max-height: 95vh;
+            background: linear-gradient(165deg, #44323c 0%, #221a25 35%, #120e16 100%);
+            border-radius: 44px;
+            padding: 35px 24px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+        }
+
+        /* Top Header Actions */
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 45px;
+        }
+
+        .header-title {
+            font-size: 1.05rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Avatar Section */
+        .avatar-wrapper {
+            position: relative;
+            align-self: flex-start;
+            margin-left: 8px;
+            margin-bottom: 75px;
+        }
+
+        .avatar-circle {
+            width: 210px;
+            height: 210px;
+            background-color: #f6c845; /* Replicating background yellow in 1000109261.jpg */
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .avatar-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Experience Badge Overlay */
+        .experience-badge {
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            white-space: nowrap;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        /* Green Floating Button */
+        .fab-chat {
+            position: absolute;
+            bottom: 15px;
+            right: -8px;
+            width: 62px;
+            height: 62px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.35rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(92, 184, 92, 0.3);
+        }
+
+        .fab-chat .question-mark {
+            font-size: 0.62rem;
+            position: absolute;
+            font-weight: bold;
+            top: 25px;
+        }
+
+        /* Identity Info */
+        .user-info {
+            margin-bottom: 40px;
+            padding-left: 8px;
+        }
+
+        .user-name {
+            font-size: 3.1rem;
+            font-weight: 500;
+            line-height: 1.12;
+            letter-spacing: -0.5px;
+        }
+
+        /* Metric/Stat Pills */
+        .stats-counter-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: auto; /* Dynamically forces the bottom tabs to the baseline */
+            padding-left: 8px;
+        }
+
+        .stat-pill {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 12px 18px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .stat-pill i {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
+
+        /* Bottom Tab Navigation Bar */
+        .navigation-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: rgba(0, 0, 0, 0.35);
+            padding: 6px;
+            border-radius: 40px;
+            gap: 4px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 18px 0;
+            border-radius: 35px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* Mobile View Overrides */
+        @media (max-width: 480px) {
+            body {
+                padding: 0;
+            }
+            .profile-container {
+                max-width: 100%;
+                height: 100vh;
+                max-height: 100vh;
+                border-radius: 0;
+                padding: 50px 20px 24px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <!-- Header Section -->
+        <header class="profile-header">
+            <button class="icon-btn" aria-label="Back"><i class="fa-solid fa-arrow-left"></i></button>
+            <span class="header-title">Profile</span>
+            <button class="icon-btn" aria-label="Menu"><i class="fa-solid fa-table-cells-large"></i></button>
+        </header>
+
+        <!-- Avatar & Experience Layout -->
+        <div class="avatar-wrapper">
+            <div class="avatar-circle">
+                <!-- Fallback unsplash portrait to safely populate the frame layout -->
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400" alt="Margaretha Collins">
+                <div class="experience-badge">12 years experience</div>
+            </div>
+            <button class="fab-chat" aria-label="Chat help">
+                <i class="fa-regular fa-comment-dots"></i>
+                <span class="question-mark">?</span>
+            </button>
+        </div>
+
+        <!-- User Information -->
+        <main class="user-info">
+            <h1 class="user-name">Margaretha<br>Collins</h1>
+        </main>
+
+        <!-- Stats Section -->
+        <section class="stats-counter-container">
+            <div class="stat-pill">
+                <i class="fa-solid fa-user-minus"></i>
+                <span>275K</span>
+            </div>
+            <div class="stat-pill">
+                <i class="fa-regular fa-copy"></i>
+                <span>2,963</span>
+            </div>
+            <div class="stat-pill">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>581</span>
+            </div>
+        </section>
+
+        <!-- Dynamic Navigation Tabs -->
+        <nav class="navigation-tabs">
+            <button class="tab-btn active">Hello</button>
+            <button class="tab-btn">Stats</button>
+            <button class="tab-btn">Photos</button>
+            <button class="tab-btn">About</button>
+        </nav>
+    </div>
+
+</body>
+</html>
+
